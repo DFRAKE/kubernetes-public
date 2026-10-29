@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nginx-deployment
 spec:
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
       app: nginx-app
@@ -16,6 +16,6 @@ spec:
         - name: ecr-secret
       containers:
         - name: nginx-app
-          image: 933090817123.dkr.ecr.us-east-1.amazonaws.com/ecr-nginx:v1.0
+          image: 933090817123.dkr.ecr.us-east-1.amazonaws.com/ecr-nginx:v2.0
           ports:
             - containerPort: 80
