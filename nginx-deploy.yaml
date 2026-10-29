@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-app-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-app
+  template:
+    metadata:
+      labels:
+        app: nginx-app
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+        - name: nginx-app
+          image: 933090817123.dkr.ecr.us-east-1.amazonaws.com/ecr-nginx:v1.0
+          ports:
+            - containerPort: 80
